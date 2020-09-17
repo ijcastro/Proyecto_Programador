@@ -1,0 +1,8 @@
+Algoritmo Practica05
+	definir var1, var2 Como Entero
+	var1 = azar(50000)
+	var2 = azar(50000)
+	Mostrar var1 + var2
+	Mostrar var1 - var2
+	Mostrar var1 * var2	
+FinAlgoritmo

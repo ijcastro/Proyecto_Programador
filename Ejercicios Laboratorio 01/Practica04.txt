@@ -1,0 +1,17 @@
+Algoritmo Practica04
+	Definir lts, gasto, km, pr, kml Como Real
+	//Entrada de datos
+	Escribir "Los kilometros recorridos son"
+	Leer km
+	Escribir "El precio del litro de combustible es"
+	Leer pr
+	Escribir "Los kilometros recorridos por litro son"
+	Leer kml
+	//Procesos
+	lts = km/kml
+	gasto = pr*lts
+	//Salidas
+	Mostrar "La cantidad de litros consumidos es de ", lts
+	Mostrar "El importe gastado en combustible es $ ", gasto
+	
+FinAlgoritmo

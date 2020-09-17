@@ -1,0 +1,8 @@
+Algoritmo Practica03
+	Definir lado, perimetro Como Real
+	Escribir "El lado del cuadrado tiene un valor de"
+	leer lado
+	perimetro = lado*4
+	Mostrar "El perimetro del cuadrado tiene un valor de ", perimetro
+		
+FinAlgoritmo

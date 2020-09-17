@@ -1,0 +1,52 @@
+Algoritmo Practica03
+	//Definicion de variables:
+	Definir ronda, numCartaJ1, numCartaJ2, paloCartaJ1, paloCartaJ2, puntosJ1, puntosJ2 Como Entero
+	ronda = 1
+	puntosJ1 = 0
+	puntosJ2 = 0
+		
+	Repetir
+		//Se sacan las cartas
+		numCartaJ1 = azar(11)
+		paloCartaJ1 = azar(5)
+		numCartaJ2 = azar(11)
+		paloCartaJ2 = azar(5)
+		
+		Mostrar "Jugador 1 saca ", numCartaJ1, " de ", paloCartaJ1
+		Mostrar "Jugador 2 saca ", numCartaJ2, " de ", paloCartaJ2
+		
+		Si numCartaJ1 > numCartaJ2 Entonces
+			puntosJ1 = puntosJ1 + numCartaJ1 + numCartaJ2
+		SiNo
+			Si (numCartaJ2 > numCartaJ1) Entonces
+				puntosJ2 = puntosJ2 + numCartaJ1 + numCartaJ2
+			SiNo
+				Si numCartaJ1 = numCartaJ2 Entonces
+					Si paloCartaJ1 = 4 Entonces
+						puntosJ1 = puntosJ1 + numCartaJ1 + numCartaJ2
+					SiNo
+						Si paloCartaJ2 = 4 Entonces
+							puntosJ2 = puntosJ2 + numCartaJ1 + numCartaJ2
+						SiNo
+							puntosJ1 = puntosJ1 + numCartaJ1
+							puntosJ2 = puntosJ2 + numCartaJ2	
+						Fin Si
+					Fin Si
+				Fin Si
+			FinSi
+			
+		Fin Si
+		
+		ronda = ronda +1
+			
+	Mientras Que ronda <=2
+	
+	//Salida
+	Si puntosJ1 > puntosJ2 Entonces
+		Mostrar "Gana el jugador 1 con ", puntosJ1
+	SiNo
+		Mostrar "Gana el jugador 2 con ", puntosJ2
+	Fin Si
+	
+		
+FinAlgoritmo

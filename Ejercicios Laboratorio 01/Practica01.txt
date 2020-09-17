@@ -1,0 +1,6 @@
+Algoritmo Práctica01
+	Definir mensaje Como Caracter
+	Escribir "Hola JAVA"
+	Leer mensaje
+	Mostrar mensaje
+FinAlgoritmo
