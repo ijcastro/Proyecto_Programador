@@ -43,9 +43,7 @@ public class Consultor extends Trabajador{
     //Métodos propios:
     @Override
     public float calcularPaga(){
-        float aux = 0;
-        aux = cantidadHoras * valorHora;        
-        return aux;
+        return cantidadHoras * valorHora;
     }
 
     @Override

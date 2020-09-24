@@ -5,6 +5,13 @@
  */
 package com.ejemplo.gui;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,13 +22,14 @@ public class JFLogin extends javax.swing.JFrame {
 
     private static final String USUARIO = "ijcastro";
     private static final String CLAVE = "Buda2016";
+
     /**
      * Creates new form JFLogin
      */
     public JFLogin() {
         initComponents();
         this.setLocationRelativeTo(null);
-        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -99,17 +107,44 @@ public class JFLogin extends javax.swing.JFrame {
 
     private void jbIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbIngresarActionPerformed
         // TODO add your handling code here:
-        if (jtUsuario.getText().equals("")){
+        if (jtUsuario.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Debe ingresar Usuario", "Validación", JOptionPane.ERROR_MESSAGE);
-        } else if (jpClave.getText().equals("")){
+        } else if (jpClave.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Debe ingresar Clave", "Validación", JOptionPane.ERROR_MESSAGE);
-        } else if (jtUsuario.getText().equals(USUARIO) && jpClave.getText().equals(CLAVE)){
+        }
+        /*else if (jtUsuario.getText().equals(USUARIO) && jpClave.getText().equals(CLAVE)){
             JOptionPane.showMessageDialog(this, "Bienvenido " + jtUsuario.getText() + " al sistema!", "Validación", 2);
             this.dispose();
         } else if ((jtUsuario.getText() != null && jpClave.getText() != null) && (!jtUsuario.getText().equals(USUARIO) || !jpClave.getText().equals(CLAVE))){
             JOptionPane.showMessageDialog(this, "Usuario y/o password incorrectos!");
+        }*/
+        try {
+            //URL de conexión: base + usuario + password
+            String sql = "SELECT * "
+                    + "FROM USUARIOS t "
+                    + "WHERE t.NOMBRE = '" + jtUsuario.getText() + "' "
+                    + "AND t.PASSWORD = '" + jpClave.getText() + "'";
+            //Crear conexión
+            Connection cnn = DriverManager.getConnection("jdbc:derby://localhost:1527/Prueba", "administrador", "admin");
+            //crear un comando
+            Statement stmt = cnn.createStatement();
+            //Ejecutar y obtener un conjunto de rdos
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                int id = rs.getInt("id_usuario");
+                String usuario = rs.getString("nombre");
+                String pass = rs.getString("password");
+            }
+            
+            rs.close();
+            stmt.close();
+            cnn.close();
+            
+            }catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Error. No se puede conectar con la BD");
         }
-        
+
+
     }//GEN-LAST:event_jbIngresarActionPerformed
 
     private void jpClaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jpClaveActionPerformed
@@ -119,7 +154,6 @@ public class JFLogin extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

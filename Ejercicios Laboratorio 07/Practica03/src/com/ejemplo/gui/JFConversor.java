@@ -160,13 +160,17 @@ public class JFConversor extends javax.swing.JFrame {
 
     private void jbConvertirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConvertirActionPerformed
         // TODO add your handling code here:
-        if (jcMoneda.getSelectedIndex()==0 || (jtCantidad.getText().equals(""))){
+        try{
+            if (jcMoneda.getSelectedIndex()==0 || (jtCantidad.getText().equals(""))){
             JOptionPane.showMessageDialog(this, "Ingrese Valores");
         } else if((jcMoneda.getSelectedIndex() == 1) && (!jtCantidad.getText().equals(""))){
             jtResultante.setText(this.cantidadDolar());
         } else if (jcMoneda.getSelectedIndex()==2 && (!jtCantidad.getText().equals(""))){
             jtResultante.setText(this.cantidadEuro());
         } 
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(this, "Valor no permitido!");
+        }
     }//GEN-LAST:event_jbConvertirActionPerformed
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed

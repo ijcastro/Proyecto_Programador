@@ -1,5 +1,7 @@
 package com.ejemplo;
 
+import com.ejemplo.gui.JFPlanilla;
+
 public class Ejecutable {
 
     /**
@@ -7,6 +9,8 @@ public class Ejecutable {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        JFPlanilla nuevo = new JFPlanilla();
+        nuevo.setVisible(true);
     }
     
 }

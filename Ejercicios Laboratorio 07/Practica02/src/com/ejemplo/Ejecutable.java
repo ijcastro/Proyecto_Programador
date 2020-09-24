@@ -1,6 +1,8 @@
 package com.ejemplo;
 
 import com.ejemplo.gui.JFLogin;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -12,9 +14,16 @@ public class Ejecutable {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        JFLogin login = new JFLogin();
-        login.setVisible(true);
+
+        try {
+            //Cargar el driver a memoria
+            Class.forName("org.apache.derby.jdbc.ClientDriver");
+            JFLogin login = new JFLogin();
+            login.setVisible(true);
+        } catch (ClassNotFoundException ex) {
+            System.out.println("No se pudo cargar el driver de la base de datos!");
+        }
+
     }
-    
+
 }

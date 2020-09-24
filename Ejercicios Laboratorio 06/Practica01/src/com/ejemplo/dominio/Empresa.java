@@ -77,8 +77,9 @@ public class Empresa {
     public float presupuestoMensual(){
         float aux = 0;
         //for each
-        for (Trabajador trabajador1 : trabajador) {
-            aux += trabajador1.calcularPaga();
+        for (Trabajador x : trabajador) {
+            if(x != null)
+                aux += x.calcularPaga();
         }      
         return aux;
     }
